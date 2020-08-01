@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="has-background-light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Split Text By Delimiter</title>
+  <link rel="stylesheet" href="css/main.css">
+
+  <script>
+    function splitTheText() {
+
+      var delimiter = document.getElementById("delimiterValue").value;
+
+      if (delimiter == "") {
+        delimiter = ".";
+      }
+
+      var textToProcess = document.getElementById("userInputText").value;
+
+      var textToDisplay = document.getElementById("userOutputText");
+
+      var outputTextList = textToProcess.split(delimiter);
+
+      for (var index = 0; index < outputTextList.length; index++) {
+        var line = outputTextList[index].trim(" ");
+        if (line != "") {
+          textToDisplay.textContent += index + ". " + line + ".\n";
+        }
+      }
+    }
+  </script>
+
+</head>
+
+<body class="has-background-light">
+
+  <div class="box content-holder">
+
+    <div class="box has-background-grey-lighter">
+      <table class="table has-background-grey-lighter">
+        <tr>
+          <td>
+            <input class="input is-rounded" type="text" id="delimiterValue" placeholder="Delimiter Value ( default: . )">
+          </td>
+          <td>
+            <button class="button is-rounded is-info" onclick="splitTheText()">Start Splitting</button>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="columns has-background-white">
+      <div class="column">
+        <textarea class="textarea is-focused" rows="14" id="userInputText"></textarea>
+      </div>
+      <div class="column">
+        <textarea class="textarea has-background-light" rows="14" id="userOutputText" readonly></textarea>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
